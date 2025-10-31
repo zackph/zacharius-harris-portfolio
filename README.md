@@ -8,7 +8,9 @@ I’m currently expanding my portfolio to pursue an entry-level software or prog
 📬 Contact
 
 Email: zp.harris@yahoo.com
+
 GitHub: github.com/zacharius-harris 
+
 Location: Indianola, Mississippi, USA
 
 I’m currently open to opportunities for entry-level programming and software development roles. Feel free to reach out for collaboration or interviews.
