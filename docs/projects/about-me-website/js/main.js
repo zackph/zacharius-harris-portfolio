@@ -1,6 +1,10 @@
 // js/main.js
 // Main “wiring” file: grabs elements + connects buttons to each module.
 
+import { setupMessages } from "./messages.js";
+
+setupMessages();
+
 import { loadTheme, toggleTheme } from "./theme.js";
 import { loadRandomQuote, resetQuote } from "./quotes.js";
 import {
