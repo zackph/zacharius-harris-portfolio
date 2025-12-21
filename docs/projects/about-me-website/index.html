@@ -75,36 +75,23 @@
     <section id="messages">
       <h2>Leave a Message</h2>
 
-      <form id="messageForm">
-        <label for="userName">Name</label>
-        <input
-          type="text"
-          id="userName"
-          placeholder="Your name (saved)"
-          autocomplete="name"
-          required
-        />
+<form id="messageForm">
+  <label for="userName">Name</label>
+  <input id="userName" type="text" placeholder="Your name (saved)" />
 
-        <label for="userMessage">Message</label>
-        <input
-          type="text"
-          id="userMessage"
-          placeholder="Type a message..."
-          required
-        />
+  <label for="userMessage">Message</label>
+  <input id="userMessage" type="text" placeholder="Type a message..." maxlength="50" />
 
-        <button id="submitBtn" type="submit">Submit</button>
+  <button type="submit">Submit</button>
+</form>
 
-        <!-- JS shows warnings here -->
-        <p id="charWarning"></p>
-      </form>
+<p id="charWarning"></p>
+<p id="charCount"></p>
 
-      <!-- JS updates this while you type -->
-      <p id="charCount">50 characters remaining</p>
+<button id="clearHistoryBtn" type="button">Clear History</button>
 
-      <h3>Message History</h3>
-      <button id="clearHistoryBtn" type="button">Clear History</button>
-      <ul id="messageList"></ul>
+<ul id="messageList"></ul>
+
     </section>
 
     <!-- =====================================================
@@ -186,5 +173,6 @@
 
 </body>
 </html>
+
 
 
