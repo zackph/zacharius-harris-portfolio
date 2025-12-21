@@ -5,7 +5,9 @@
 // =====================================================
 
 import { loadTheme, toggleTheme } from "./theme.js";
-import { loadRandomQuote, resetQuote } from "./quotes.js";
+import { setupQuotes } from "./quotes.js";
+import { setupMessages } from "./messages.js";
+
 
 import {
   loadSavedName,
