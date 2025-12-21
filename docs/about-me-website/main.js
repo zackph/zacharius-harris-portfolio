@@ -102,3 +102,4 @@ loadMessageHistory(messageListEl);
 updateCharUI(userMessageInput, charCountEl, charWarningEl);
 
 console.log("Lesson 12 full modules loaded ✅");
+
