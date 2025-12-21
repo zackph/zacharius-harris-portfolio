@@ -1,108 +1,108 @@
 // js/main.js
-// =====================================================
-// MAIN MODULE (ENTRY POINT)
-// - Wires up Theme + Quotes + Messages + API
-// =====================================================
+// Main “wiring” file: grabs elements + connects buttons to each module.
 
 import { loadTheme, toggleTheme } from "./theme.js";
-import { setupQuotes } from "./quotes.js";
-import { setupMessages } from "./messages.js";
-
-
+import { loadRandomQuote, resetQuote } from "./quotes.js";
 import {
   loadSavedName,
   updateCharUI,
   loadMessageHistory,
   handleMessageSubmit,
-  clearMessageHistory
+  clearMessageHistory,
 } from "./messages.js";
 
 import { loadAgifyAge } from "./api.js";
 
-// =====================================================
-// GRAB ELEMENTS FROM HTML (IDs must match index.html)
-// =====================================================
+// Run AFTER the page loads so the elements exist
+document.addEventListener("DOMContentLoaded", () => {
+  // =========================================
+  // Grab elements from HTML (IDs must match!)
+  // =========================================
+  const body = document.body;
 
-// Theme
-const body = document.body;
-const themeToggleBtn = document.getElementById("themeToggleBtn");
+  // Theme
+  const themeToggleBtn = document.getElementById("themeToggleBtn");
 
-// Quotes
-const quoteTextEl = document.getElementById("quote-text");
-const quoteAuthorEl = document.getElementById("quote-author");
-const newQuoteBtn = document.getElementById("newQuoteBtn");
-const resetQuoteBtn = document.getElementById("resetQuoteBtn");
-const quoteTipEl = document.getElementById("quoteTip");
+  // Quotes
+  const quoteText = document.getElementById("quote-text");
+  const quoteAuthor = document.getElementById("quote-author");
+  const newQuoteBtn = document.getElementById("newQuoteBtn");
+  const resetQuoteBtn = document.getElementById("resetQuoteBtn");
 
-// Messages
-const messageForm = document.getElementById("messageForm");
-const userNameInput = document.getElementById("userName");
-const userMessageInput = document.getElementById("userMessage");
-const charWarningEl = document.getElementById("charWarning");
-const charCountEl = document.getElementById("charCount");
-const messageListEl = document.getElementById("messageList");
-const clearHistoryBtn = document.getElementById("clearHistoryBtn");
+  // Messages
+  const nameInput = document.getElementById("userName");
+  const msgInput = document.getElementById("userMessage");
+  const messageForm = document.getElementById("messageForm");
+  const charCount = document.getElementById("charCount");
+  const charWarning = document.getElementById("charWarning");
+  const clearHistoryBtn = document.getElementById("clearHistoryBtn");
+  const messageList = document.getElementById("messageList");
 
-// API Demo
-const apiNameInput = document.getElementById("apiNameInput");
-const loadApiBtn = document.getElementById("loadApiBtn");
-const apiOutput = document.getElementById("apiOutput");
+  // API demo
+  const apiNameInput = document.getElementById("apiNameInput");
+  const loadApiBtn = document.getElementById("loadApiBtn");
+  const apiOutput = document.getElementById("apiOutput");
 
-// =====================================================
-// EVENT LISTENERS
-// =====================================================
+  // =========================================
+  // Theme wiring
+  // =========================================
+  if (themeToggleBtn) {
+    loadTheme(body, themeToggleBtn);
+    themeToggleBtn.addEventListener("click", () => toggleTheme(body, themeToggleBtn));
+  }
 
-// Theme toggle
-themeToggleBtn.addEventListener("click", () => {
-  toggleTheme(body, themeToggleBtn);
+  // =========================================
+  // Quotes wiring
+  // =========================================
+  if (quoteText && quoteAuthor) {
+    // Set the default quote once on load
+    resetQuote(quoteText, quoteAuthor);
+
+    if (newQuoteBtn) {
+      newQuoteBtn.addEventListener("click", () => loadRandomQuote(quoteText, quoteAuthor));
+    }
+
+    if (resetQuoteBtn) {
+      resetQuoteBtn.addEventListener("click", () => resetQuote(quoteText, quoteAuthor));
+    }
+  }
+
+  // =========================================
+  // Messages wiring
+  // =========================================
+  if (nameInput) loadSavedName(nameInput);
+
+  if (messageList) loadMessageHistory(messageList);
+
+  if (msgInput && charCount && charWarning) {
+    // Show initial “50 characters remaining”
+    updateCharUI(msgInput, charCount, charWarning);
+
+    msgInput.addEventListener("input", () => {
+      updateCharUI(msgInput, charCount, charWarning);
+    });
+  }
+
+  if (messageForm) {
+    messageForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      handleMessageSubmit(nameInput, msgInput, messageList);
+      if (msgInput && charCount && charWarning) {
+        updateCharUI(msgInput, charCount, charWarning);
+      }
+    });
+  }
+
+  if (clearHistoryBtn) {
+    clearHistoryBtn.addEventListener("click", () => clearMessageHistory(messageList));
+  }
+
+  // =========================================
+  // API wiring (optional)
+  // =========================================
+  if (loadApiBtn) {
+    loadApiBtn.addEventListener("click", () => {
+      loadAgifyAge(apiNameInput, apiOutput);
+    });
+  }
 });
-
-// Quotes
-newQuoteBtn.addEventListener("click", () => {
-  loadRandomQuote(quoteTextEl, quoteAuthorEl, quoteTipEl);
-});
-
-resetQuoteBtn.addEventListener("click", () => {
-  resetQuote(quoteTextEl, quoteAuthorEl, quoteTipEl);
-});
-
-// Messages: character counter
-userMessageInput.addEventListener("input", () => {
-  updateCharUI(userMessageInput, charCountEl, charWarningEl);
-});
-
-// Messages: submit
-messageForm.addEventListener("submit", (e) => {
-  handleMessageSubmit(e, {
-    userNameInput,
-    userMessageInput,
-    messageListEl,
-    charWarningEl,
-    charCountEl
-  });
-});
-
-// Messages: clear history
-clearHistoryBtn.addEventListener("click", () => {
-  clearMessageHistory(messageListEl);
-});
-
-// API demo
-loadApiBtn.addEventListener("click", () => {
-  loadAgifyAge(apiNameInput, apiOutput);
-});
-
-// =====================================================
-// INITIAL LOAD
-// =====================================================
-
-loadTheme(body, themeToggleBtn);
-resetQuote(quoteTextEl, quoteAuthorEl, quoteTipEl);
-
-loadSavedName(userNameInput);
-loadMessageHistory(messageListEl);
-updateCharUI(userMessageInput, charCountEl, charWarningEl);
-
-console.log("Lesson 12 full modules loaded ✅");
-
-
