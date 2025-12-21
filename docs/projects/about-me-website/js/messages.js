@@ -1,141 +1,134 @@
 // js/messages.js
-// Handles:
-// - Save name to localStorage
-// - Save message history to localStorage
-// - Character counter UI
-// - Render message list on load
+// =====================================================
+// MESSAGES MODULE
+// - Saves message history to localStorage
+// - Loads history on page load
+// - Saves the user's name
+// - Character counter (50 max)
+// =====================================================
 
-const NAME_KEY = "aboutme_saved_name";
-const HISTORY_KEY = "aboutme_message_history";
+const STORAGE_KEY_MESSAGES = "messageHistory";
+const STORAGE_KEY_NAME = "savedName";
 const MAX_CHARS = 50;
 
 /**
- * Safely read JSON from localStorage.
+ * Safely load message history from localStorage.
+ * Returns an array like: [{ name: "...", text: "...", time: 123456789 }]
  */
-function readJson(key, fallback) {
+function loadStoredMessages() {
   try {
-    const raw = localStorage.getItem(key);
-    if (!raw) return fallback;
-    return JSON.parse(raw);
-  } catch (err) {
-    console.warn(`Failed to parse localStorage key: ${key}`, err);
-    return fallback;
+    const raw = localStorage.getItem(STORAGE_KEY_MESSAGES);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
   }
 }
 
-/**
- * Safely write JSON to localStorage.
- */
-function writeJson(key, value) {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch (err) {
-    console.warn(`Failed to write localStorage key: ${key}`, err);
-  }
+/** Save messages array back to localStorage */
+function saveStoredMessages(messages) {
+  localStorage.setItem(STORAGE_KEY_MESSAGES, JSON.stringify(messages));
+}
+
+/** Render message list to the page */
+function renderMessages(listEl, messages) {
+  listEl.innerHTML = "";
+
+  messages.forEach((msg) => {
+    const li = document.createElement("li");
+    li.textContent = `${msg.name}: ${msg.text}`;
+    listEl.appendChild(li);
+  });
+}
+
+/** Update character counter UI */
+function updateCharUI(messageInput, charCountEl, charWarningEl) {
+  const remaining = MAX_CHARS - messageInput.value.length;
+  charCountEl.textContent = `${remaining} characters remaining`;
+
+  // Show warning only when 0 or less remaining
+  charWarningEl.textContent = remaining <= 0 ? "Character limit reached!" : "";
 }
 
 /**
- * Renders one <li> into the message list.
- */
-function addMessageToList(messageListEl, name, text, timestamp) {
-  const li = document.createElement("li");
-
-  const time = new Date(timestamp).toLocaleString();
-  li.textContent = `${name}: ${text} (${time})`;
-
-  messageListEl.prepend(li); // newest on top
-}
-
-/**
- * Initializes the messages feature.
+ * Public: sets up the whole Messages feature
+ * Make sure your HTML IDs match the ones below.
  */
 export function setupMessages() {
-  // Grab elements
+  // --- REQUIRED ELEMENTS (IDs MUST MATCH index.html) ---
   const form = document.getElementById("messageForm");
   const nameInput = document.getElementById("userName");
   const messageInput = document.getElementById("userMessage");
-  const messageList = document.getElementById("messageList");
-  const charWarning = document.getElementById("charWarning");
-  const charCount = document.getElementById("charCount");
+  const listEl = document.getElementById("messageList");
   const clearBtn = document.getElementById("clearHistoryBtn");
+  const charCountEl = document.getElementById("charCount");
+  const charWarningEl = document.getElementById("charWarning");
 
-  // If ANY are missing, stop and tell you in the console.
-  const required = { form, nameInput, messageInput, messageList, charWarning, charCount, clearBtn };
-  for (const [key, el] of Object.entries(required)) {
-    if (!el) {
-      console.error(`messages.js: Missing element with id for "${key}". Check index.html IDs.`);
-      return;
-    }
+  // If any are missing, stop cleanly (prevents crashes)
+  if (
+    !form ||
+    !nameInput ||
+    !messageInput ||
+    !listEl ||
+    !clearBtn ||
+    !charCountEl ||
+    !charWarningEl
+  ) {
+    console.warn("Messages module: missing one or more required HTML elements.");
+    return;
   }
 
-  // Load saved name
-  const savedName = localStorage.getItem(NAME_KEY);
+  // --- LOAD SAVED NAME ---
+  const savedName = localStorage.getItem(STORAGE_KEY_NAME);
   if (savedName) nameInput.value = savedName;
 
-  // Load saved history + render it
-  const history = readJson(HISTORY_KEY, []);
-  history.forEach((msg) => {
-    addMessageToList(messageList, msg.name, msg.text, msg.timestamp);
-  });
-
-  // Character counter UI
-  function updateCharUI() {
-    const remaining = MAX_CHARS - messageInput.value.length;
-    charCount.textContent = `${remaining} characters remaining`;
-
-    if (remaining < 0) {
-      charWarning.textContent = "Message too long!";
-    } else if (remaining <= 10) {
-      charWarning.textContent = "Almost at the limit!";
-    } else {
-      charWarning.textContent = "";
-    }
-  }
-
-  messageInput.addEventListener("input", updateCharUI);
-  updateCharUI();
-
-  // Save name while you type (so it always persists)
+  // Save name whenever user types
   nameInput.addEventListener("input", () => {
-    localStorage.setItem(NAME_KEY, nameInput.value.trim());
+    localStorage.setItem(STORAGE_KEY_NAME, nameInput.value.trim());
   });
 
-  // Submit handler (THIS prevents refresh!)
-  form.addEventListener("submit", (e) => {
-    e.preventDefault(); // critical
+  // --- LOAD + RENDER MESSAGE HISTORY ---
+  let messages = loadStoredMessages();
+  renderMessages(listEl, messages);
 
-    const name = nameInput.value.trim() || "Anonymous";
+  // --- CHARACTER COUNTER SETUP ---
+  messageInput.maxLength = MAX_CHARS; // hard limit
+  updateCharUI(messageInput, charCountEl, charWarningEl);
+
+  messageInput.addEventListener("input", () => {
+    updateCharUI(messageInput, charCountEl, charWarningEl);
+  });
+
+  // --- FORM SUBMIT (THIS IS THE BIG ONE) ---
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); // ✅ prevents page refresh!
+
+    const name = nameInput.value.trim();
     const text = messageInput.value.trim();
 
-    // Basic validation
-    if (!text) return;
-    if (text.length > MAX_CHARS) return;
+    if (!name || !text) return;
 
-    // Build message object
-    const newMsg = {
+    // Add message to array
+    messages.push({
       name,
       text,
-      timestamp: Date.now(),
-    };
+      time: Date.now(),
+    });
 
-    // Save to localStorage
-    const current = readJson(HISTORY_KEY, []);
-    current.push(newMsg);
-    writeJson(HISTORY_KEY, current);
+    // Save + re-render
+    saveStoredMessages(messages);
+    renderMessages(listEl, messages);
 
-    // Update UI
-    addMessageToList(messageList, newMsg.name, newMsg.text, newMsg.timestamp);
-
-    // Clear message box
+    // Clear message box (keep name)
     messageInput.value = "";
-    updateCharUI();
+    updateCharUI(messageInput, charCountEl, charWarningEl);
   });
 
-  // Clear history
+  // --- CLEAR HISTORY ---
   clearBtn.addEventListener("click", () => {
-    localStorage.removeItem(HISTORY_KEY);
-    messageList.innerHTML = "";
+    messages = [];
+    localStorage.removeItem(STORAGE_KEY_MESSAGES);
+    renderMessages(listEl, messages);
   });
-
-  console.log("Messages module loaded ✅");
 }
