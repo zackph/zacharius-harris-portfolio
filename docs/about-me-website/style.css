@@ -1,0 +1,392 @@
+/* =========================================================
+   GLOBAL STYLES
+   These affect the whole page.
+========================================================= */
+
+/* =========================================================
+   NAVIGATION BAR
+========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  padding: 12px;
+  background-color: inherit;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation links */
+.site-nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+}
+
+/* Hover effect */
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+
+  /* Light theme defaults */
+  background: #f2f2f2;
+  color: #111;
+}
+
+/* =========================================================
+   LESSON 13 POLISH: TYPOGRAPHY + SPACING
+========================================================= */
+
+body {
+  line-height: 1.5;
+}
+
+/* Make headings look cleaner */
+h1 {
+  margin-bottom: 8px;
+}
+
+h2 {
+  margin-top: 44px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+/* =========================================================
+   LESSON 13: SMOOTH TRANSITIONS
+   These transitions make theme changes feel professional.
+========================================================= */
+
+body,
+header,
+button,
+input,
+.card,
+#messageList li,
+#apiOutput {
+  transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+}
+
+/* Center content and keep it readable */
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+  padding: 25px 15px;
+  text-align: center;
+  background: #ffffff;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+button {
+  padding: 10px 14px;
+  border: 2px solid #111;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+button:hover {
+  background-color: #f0f0f0;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Keyboard accessibility: show focus outline */
+button:focus,
+input:focus {
+  outline: 3px solid #4caf50;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   BUTTON MICRO-INTERACTIONS
+========================================================= */
+
+button {
+  transition: transform 120ms ease, background-color 250ms ease, color 250ms ease, border-color 250ms ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================================================
+   LABELS + INPUTS
+========================================================= */
+
+label {
+  display: block;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+
+  margin: 0 auto;         /* remove extra vertical margin */
+  display: block;
+  width: 280px;
+  text-align: center;
+}
+
+/* Give the form area a little structure */
+#messageForm {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card {
+  margin-top: 36px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: inline-block;
+  padding: 16px;
+  text-align: center;
+}
+.project-card {
+  margin-bottom: 24px;
+}
+
+/* section spacing */
+h2 {
+  margin-top: 40px;
+}
+
+/* =========================================================
+   QUOTE BOX
+========================================================= */
+
+.quote-box {
+  background-color: #222;
+  color: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 700px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#quote-text {
+  font-size: 18px;
+  font-style: italic;
+  margin: 0;
+}
+
+.quote-author {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.quote-buttons {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.tip-text {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* =========================================================
+   LISTS
+========================================================= */
+
+main ul {
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* =========================================================
+   MESSAGE SECTION
+========================================================= */
+
+#charWarning {
+  color: red;
+  min-height: 18px;
+  margin: 8px 0 0;
+}
+
+#messageList {
+  margin-top: 12px;
+  padding: 0;
+}
+
+#messageList li {
+  list-style: none;
+  padding: 10px;
+  margin: 8px auto;
+  background: #fff;
+  border-radius: 10px;
+  max-width: 520px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  text-align: left;
+}
+
+/* =========================================================
+   API SECTION
+========================================================= */
+
+#api-demo {
+  margin-top: 50px;
+}
+
+#apiOutput {
+  margin-top: 15px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 10px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer-text {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* =========================================================
+   DARK THEME
+   JS toggles body.classList.toggle("dark")
+========================================================= */
+
+body.dark {
+  background: #111;
+  color: #f2f2f2;
+}
+
+body.dark header {
+  background: #1c1c1c;
+}
+
+body.dark button {
+  border: 2px solid #f2f2f2;
+  background-color: #1f1f1f;
+  color: #f2f2f2;
+}
+
+body.dark .card {
+  background: #1f1f1f;
+  color: #f2f2f2;
+}
+
+body.dark input {
+  background: #1f1f1f;
+  color: #f2f2f2;
+  border: 1px solid #444;
+}
+
+body.dark #messageList li {
+  background: #1f1f1f;
+  color: #f2f2f2;
+}
+
+body.dark #apiOutput {
+  background: #1f1f1f;
+}
+/* =========================================================
+   QUOTE FADE ANIMATION
+========================================================= */
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#quote-text,
+#quote-author {
+  transition: opacity 260ms ease, transform 260ms ease;
+}
+/* =========================================================
+   MESSAGE POP-IN ANIMATION
+========================================================= */
+
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.new-message {
+  animation: popIn 200ms ease;
+}
+
+/* =========================================================
+   PRO TOUCH: CONSISTENT SECTION WIDTH
+========================================================= */
+
+section {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Add breathing room between sections */
+section + section {
+  margin-top: 48px;
+}
