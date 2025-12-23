@@ -1,0 +1,14 @@
+<div class="project-card">
+  <h3>About Me Website</h3>
+  <p>
+    Personal website built with HTML, CSS, and JavaScript featuring
+    theme toggle, quotes, messages, and API usage.
+  </p>
+  <a href="https://YOUR-USERNAME.github.io/about-me/" target="_blank">
+    Live Demo
+  </a>
+  |
+  <a href="https://github.com/YOUR-USERNAME/about-me" target="_blank">
+    GitHub Repo
+  </a>
+</div>
