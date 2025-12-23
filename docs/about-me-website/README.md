@@ -9,7 +9,7 @@ This is my personal About Me website built with HTML, CSS, and JavaScript.
 - Responsive layout and smooth animations
 
 ## Live Demo
-https://YOUR-USERNAME.github.io/about-me/
+(https://zackph.github.io/zacharius-harris-portfolio/about-me-website/)
 
 ## Tech Used
 - HTML5
