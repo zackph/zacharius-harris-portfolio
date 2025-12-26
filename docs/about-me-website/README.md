@@ -5,8 +5,14 @@ This project demonstrates real-world front-end development practices, modular co
 
 ---
 
-🚀 Live Demo: https://zackph.github.io/zacharius-harris-portfolio/about-me-website/  
-*(Tip: Ctrl+Click or Middle-click to open in a new tab)*
+## 🚀 Live Demo
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Open-blue?style=for-the-badge)](https://zackph.github.io/zacharius-harris-portfolio/about-me-website/)
+
+👉 **View the live site here:**  
+https://zackph.github.io/zacharius-harris-portfolio/about-me-website/
+
+💡 *Tip: Ctrl+Click (or middle-click) to open in a new tab.*
 
 ---
 
