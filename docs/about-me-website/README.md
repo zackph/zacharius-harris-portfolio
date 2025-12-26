@@ -5,10 +5,7 @@ This project demonstrates real-world front-end development practices, modular co
 
 ---
 
-<a href="https://zackph.github.io/zacharius-harris-portfolio/about-me-website/"
-   target="_blank"
-   rel="noopener noreferrer">
-   🚀 Live Demo
+<a href="https://zackph.github.io/zacharius-harris-portfolio/about-me-website/" target="_blank" rel="noopener noreferrer"> 🚀 Live Demo
 </a>
 
 
