@@ -1,22 +1,45 @@
 # About Me Website
 
-This is my personal About Me website built with HTML, CSS, and JavaScript.
+A modern, interactive personal website built with **HTML5**, **CSS3**, and **JavaScript (ES Modules)**.  
+This project demonstrates real-world front-end development practices, modular code organization, and live deployment using GitHub Pages.
 
-## Features
-- Light/Dark theme toggle (saved with LocalStorage)
-- Daily quotes (local fallback + API demo)
-- Message board with saved messages
-- Responsive layout and smooth animations
+---
 
-## Live Demo
-(https://zackph.github.io/zacharius-harris-portfolio/about-me-website/)
+## 🔗 Live Demo
 
-## Tech Used
+👉 **View the live site here:**  
+https://zackph.github.io/zacharius-harris-portfolio/about-me-website/About%20me%20website/
+
+---
+
+## ✨ Features
+
+- Light/Dark theme toggle (saved with `localStorage`)
+- Modular JavaScript architecture using ES Modules
+- Quote system with:
+  - Local fallback quotes
+  - Online API demo when hosted
+- Message board with:
+  - Character counter and validation
+  - Saved name and message history
+- Reviews section with:
+  - Clickable star ratings
+  - Persistent reviews using `localStorage`
+- API demo using the Agify API
+- Smooth animations and responsive layout
+
+---
+
+## 🧰 Tech Used
+
 - HTML5
 - CSS3
 - JavaScript (ES Modules)
-- LocalStorage
-- GitHub Pages
+- localStorage
+- Fetch API
+- GitHub Pages (deployment)
 
-## Author
-Zacharius Harris
+---
+
+## 📁 Project Structure
+
