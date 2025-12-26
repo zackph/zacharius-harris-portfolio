@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       BASIC PAGE SETUP
+  ====================================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Zacharius Harris | About Me</title>
+
+  <!-- Connect our CSS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- =====================================================
+       NAV
+  ====================================================== -->
+  <nav class="site-nav">
+    <a href="#about">About</a>
+    <a href="#quote">Quotes</a>
+    <a href="#messages">Messages</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#interests">Interests</a>
+    <a href="#projects">Projects</a>
+    <a href="#api-demo">API</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+  <header id="about">
+    <h1>Hello, I'm Zacharius Harris</h1>
+    <p>
+      I'm an aspiring programmer with an IT background.
+      I love coding, gaming, and playing the piano.
+    </p>
+
+    <button id="themeToggleBtn" type="button" aria-label="Toggle dark and light theme">
+      Dark Mode
+    </button>
+  </header>
+
+  <!-- =====================================================
+       MAIN CONTENT
+  ====================================================== -->
+  <main class="container">
+
+    <!-- =====================================================
+         QUOTE BOX
+    ====================================================== -->
+    <section id="quote" class="quote-box" aria-label="Quote box">
+      <p id="quote-text" aria-live="polite">Learning to code is learning to create.</p>
+      <p id="quote-author" class="quote-author">— Zacharius</p>
+
+      <div class="quote-buttons">
+        <button id="newQuoteBtn" type="button">Change Quote</button>
+        <button id="resetQuoteBtn" type="button">Reset Quote</button>
+      </div>
+
+      <p id="quoteTip" class="tip-text"></p>
+    </section>
+
+    <!-- =====================================================
+         MESSAGE SECTION
+    ====================================================== -->
+    <section id="messages">
+      <h2>Leave a Message</h2>
+
+      <form id="messageForm">
+        <label for="userName">Name</label>
+        <input
+          type="text"
+          id="userName"
+          placeholder="Your name (saved)"
+          autocomplete="name"
+          required
+        />
+
+        <label for="userMessage">Message</label>
+        <input
+          type="text"
+          id="userMessage"
+          placeholder="Type a message..."
+          required
+        />
+
+        <button id="submitBtn" type="submit">Submit</button>
+        <p id="charWarning"></p>
+      </form>
+
+      <p id="charCount">50 characters remaining</p>
+
+      <h3>Message History</h3>
+      <button id="clearHistoryBtn" type="button">Clear History</button>
+      <ul id="messageList"></ul>
+    </section>
+
+    <!-- =====================================================
+         REVIEWS
+    ====================================================== -->
+    <section id="reviews">
+      <h2>Reviews</h2>
+      <p>Leave a quick review of the site experience.</p>
+
+      <form id="reviewForm">
+
+        <label for="reviewName">Name</label>
+        <input id="reviewName" type="text" placeholder="Your name" required />
+
+        <label>Rating</label>
+        <div id="starRating" class="star-rating" aria-label="Star rating">
+          <button type="button" data-value="1" aria-label="1 star">★</button>
+          <button type="button" data-value="2" aria-label="2 stars">★</button>
+          <button type="button" data-value="3" aria-label="3 stars">★</button>
+          <button type="button" data-value="4" aria-label="4 stars">★</button>
+          <button type="button" data-value="5" aria-label="5 stars">★</button>
+        </div>
+
+        <p id="ratingValue" class="small-text">Rating: 5</p>
+
+        <label for="reviewText">Review</label>
+        <input id="reviewText" type="text" placeholder="Write a short review..." required />
+
+        <button type="submit">Submit Review</button>
+        <p id="reviewWarning"></p>
+      </form>
+
+      <h3>Review History</h3>
+      <button id="clearReviewsBtn" type="button">Clear Reviews</button>
+      <ul id="reviewList"></ul>
+    </section>
+
+    <!-- =====================================================
+         PROFILE CARD
+    ====================================================== -->
+    <figure class="card">
+      <img src="profile.jpg" alt="Photo of Zacharius Harris" width="250" />
+      <figcaption>This is me — a creative thinker and lifelong learner in tech.</figcaption>
+    </figure>
+
+    <!-- =====================================================
+         INTERESTS
+    ====================================================== -->
+    <section id="interests">
+      <h2>Interests</h2>
+      <ul>
+        <li>Programming & Web Development</li>
+        <li>Music (Piano & Composition)</li>
+        <li>Gaming & Technology</li>
+      </ul>
+    </section>
+
+    <!-- =====================================================
+         PROJECTS
+    ====================================================== -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="card project-card">
+        <h3>HTML Signature Template</h3>
+        <p>A responsive email signature with animation and customizable fields.</p>
+      </div>
+
+      <div class="card project-card">
+        <h3>About Me Website</h3>
+        <p>My first personal webpage built with HTML, CSS, and JavaScript modules.</p>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         API DEMO (Agify)
+    ====================================================== -->
+    <section id="api-demo">
+      <h2>API Data Demo</h2>
+      <p>Type a name and click the button to load live data from an API.</p>
+
+      <label for="apiNameInput">Name for API lookup</label>
+      <input type="text" id="apiNameInput" placeholder="Enter a name" />
+
+      <button id="loadApiBtn" type="button">Load API Data</button>
+
+      <div id="apiOutput"></div>
+    </section>
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:zp.harris@yahoo.com">zp.harris@yahoo.com</a></p>
+    </section>
+
+  </main>
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+  <footer>
+    <p class="footer-text">© 2025 Zacharius Harris</p>
+  </footer>
+
+  <!-- IMPORTANT: defer = JS runs AFTER HTML loads -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
