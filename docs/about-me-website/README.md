@@ -7,8 +7,8 @@ This project demonstrates real-world front-end development practices, modular co
 
 ## 🔗 Live Demo
 
-👉 **View the live site here:**  
-https://zackph.github.io/zacharius-harris-portfolio/about-me-website/About%20me%20website/
+👉 **View the live site here:** 
+(https://zackph.github.io/zacharius-harris-portfolio/about-me-website/)
 
 ---
 
