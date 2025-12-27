@@ -60,19 +60,22 @@ In addition to the static GitHub Pages version, I built a WordPress version of t
 
 In addition to the static GitHub Pages version, this project was recreated in WordPress to demonstrate CMS-based development, layout building with Gutenberg blocks, and theme customization.
 
-### 📸 Screenshots
+### 📸 WordPress Screenshots
 
 **Home Page**
-![WordPress Home](screenshots/wp-home.png)
-
-**Projects Page**
-![WordPress Projects](screenshots/wp-projects.png)
+![WordPress Home](screenshots/home.png)
 
 **About Page**
-![WordPress About](screenshots/wp-about.png)
+![WordPress About](screenshots/about.png)
+
+**Projects Page**
+![WordPress Projects](screenshots/projects.png)
 
 **Contact Page**
-![WordPress Contact](screenshots/wp-contact.png)
+![WordPress Contact](screenshots/contact.png)
+
+**Editor View (Gutenberg)**
+![WordPress Editor](screenshots/editor-projects.png)
 
 ## 📁 Project Structure
 
