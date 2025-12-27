@@ -12,12 +12,18 @@ This project demonstrates real-world front-end development practices, modular co
 👉 **View the live site here:**  
 https://zackph.github.io/zacharius-harris-portfolio/about-me-website/
 
-👉 **WordPress Portfolio Version:**  
-[![WordPress](https://img.shields.io/badge/WordPress-About%20Page-blue?logo=wordpress)](http://zacharius-portfolio.local/)
-http://zacharius-portfolio.local/
+👉 **WordPress Portfolio Version:** 
 
+[![WordPress](https://img.shields.io/badge/WordPress-About%20Page-blue?logo=wordpress)](http://zacharius-portfolio.local/)
+
+http://zacharius-portfolio.local/
+ 
 
 💡 *Tip: Ctrl+Click (or middle-click) to open in a new tab.*
+
+### 📝 Why a WordPress Version?
+
+In addition to the static GitHub Pages version, I built a WordPress version of this site to demonstrate experience with CMS-based development, content management, and theme customization. This shows how I adapt my front-end skills to real-world tools commonly used by businesses and clients.
 
 ---
 
