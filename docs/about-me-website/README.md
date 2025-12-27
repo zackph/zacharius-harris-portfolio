@@ -63,7 +63,7 @@ In addition to the static GitHub Pages version, this project was recreated in Wo
 ### 📸 WordPress Screenshots
 
 **Home Page**
-![WordPress Home](Screenshots/home.png)
+![WordPress Home](screenshots/home.png)
 
 **About Page**
 ![WordPress About](screenshots/about.png)
