@@ -62,23 +62,5 @@ In addition to the static GitHub Pages version, this project was recreated in Wo
 
 ---
 
-## 📸 WordPress Screenshots
-
-### Home Page
-![WordPress Home](screenshots/home.png)
-
-### About Page
-![WordPress About](screenshots/about.png)
-
-### Projects Page
-![WordPress Projects](screenshots/projects.png)
-
-### Contact Page
-![WordPress Contact](screenshots/contact.png)
-
-### Editor View (Gutenberg)
-![WordPress Editor](screenshots/editor-projects.png)
-dPress Editor](screenshots/editor-projects.png)
-
 ## 📁 Project Structure
 
