@@ -12,6 +12,10 @@ This project demonstrates real-world front-end development practices, modular co
 👉 **View the live site here:**  
 https://zackph.github.io/zacharius-harris-portfolio/about-me-website/
 
+👉 **WordPress Portfolio Version:**  
+[![WordPress](https://img.shields.io/badge/WordPress-About%20Page-blue?logo=wordpress)](http://zacharius-portfolio.local/)
+
+
 💡 *Tip: Ctrl+Click (or middle-click) to open in a new tab.*
 
 ---
